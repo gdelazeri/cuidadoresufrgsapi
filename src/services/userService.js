@@ -2,8 +2,8 @@ const bcrypt = require('bcrypt');
 
 const Auth = require('../middlewares/auth');
 const UserModel = require('../models/user');
-const ErrorTypes = require('../types/ErrorTypes');
-const Response = require('../types/Response');
+const ErrorTypes = require('../helpers/ErrorTypes');
+const Response = require('../helpers/Response');
 
 class UserService {
   static async post(body) {
@@ -48,6 +48,9 @@ class UserService {
         return new Response(null, ErrorTypes.U004);
       }
 
+      // TODO: Check if user is active
+
+      // Check password
       const successfull = await bcrypt.compare(body.password, user.password);
       if (successfull) {
         const token = Auth.createToken({ _id: user._id, name: user.name, email: user.email, admin: user.admin });
@@ -55,6 +58,24 @@ class UserService {
       }
 
       return new Response(null, ErrorTypes.U004);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async get(id) {
+    try {
+      // Check required fields
+      if (!id) {
+        return new Response(null, ErrorTypes.U005);
+      }
+      
+      // Get the user
+      const user = await UserModel.getById(id);
+      if (user) {
+        return new Response(user);
+      }
+      return new Response(null, ErrorTypes.U005);
     } catch (error) {
       throw error;
     }

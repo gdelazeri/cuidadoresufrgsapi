@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 
 const log = require('./config/log');
 const userRoutes = require('./routes/user');
-const Response = require('./types/Response');
-const ErrorTypes = require('./types/ErrorTypes');
+const Response = require('./helpers/Response');
+const ErrorTypes = require('./helpers/ErrorTypes');
 
 /* Express initialization */
 const app = express();

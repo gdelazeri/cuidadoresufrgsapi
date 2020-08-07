@@ -28,12 +28,8 @@ class UserModel {
     return userModel.findOne({ email: email.toLowerCase() });
   }
 
-  static getByCPF(cpf) {
-    return userModel.findOne({ cpf });
-  }
-
   static getById(id) {
-    return userModel.findById(id);
+    return userModel.findById(id, { password: 0 });
   }
 
   static add(body) {

@@ -4,6 +4,7 @@ const ErrorTypes = {
   U002: { code: 'U002', message: 'O CPF informado já foi utilizado.' },
   U003: { code: 'U003', message: 'Preencha todos os campos obrigatórios' },
   U004: { code: 'U004', message: 'Usuário e/ou senha inválidos.' },
+  U005: { code: 'U005', message: 'Usuário não encontrado.' },
 }
 
 module.exports = ErrorTypes;
