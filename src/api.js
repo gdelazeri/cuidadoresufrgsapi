@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 
 const log = require('./config/log');
 const userRoutes = require('./routes/user');
+const Response = require('./types/Response');
+const ErrorTypes = require('./types/ErrorTypes');
 
 /* Express initialization */
 const app = express();
@@ -23,6 +25,13 @@ app.use('/user', userRoutes);
 app.get('/status', (req, res) => {
   log.info('API Online');
   res.send('API Online');
+});
+
+/* Error handler */
+app.use((error, req, res, next) => {
+  const status = error.statusCode || 500;
+  log.error(error);
+  res.status(status).send(new Response(null, ErrorTypes.G000));
 });
 
 /* Errors */

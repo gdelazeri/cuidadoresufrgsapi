@@ -1,5 +1,7 @@
 const log = require('../config/log');
 const UserService = require('../services/userService');
+const ErrorTypes = require('../types/ErrorTypes');
+const Response = require('../types/Response');
 
 class UserController {
   static async post(req, res) {
@@ -11,7 +13,7 @@ class UserController {
       return res.status(400).send(response);
     } catch (e) {
       log.error(e);
-      res.sendStatus(500);
+      res.status(500).send(new Response(null, ErrorTypes.U000));
     }
   }
 }
