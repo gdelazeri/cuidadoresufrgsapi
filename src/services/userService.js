@@ -48,7 +48,10 @@ class UserService {
         return new Response(null, ErrorTypes.U004);
       }
 
-      // TODO: Check if user is active
+      // Check if user is active
+      if (!user.active) {
+        return new Response(null, ErrorTypes.U006);
+      }
 
       // Check password
       const successfull = await bcrypt.compare(body.password, user.password);

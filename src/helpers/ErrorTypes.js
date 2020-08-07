@@ -5,6 +5,7 @@ const ErrorTypes = {
   U003: { code: 'U003', message: 'Preencha todos os campos obrigatórios' },
   U004: { code: 'U004', message: 'Usuário e/ou senha inválidos.' },
   U005: { code: 'U005', message: 'Usuário não encontrado.' },
+  U006: { code: 'U006', message: 'Usuário desativado.' },
 }
 
 module.exports = ErrorTypes;

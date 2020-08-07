@@ -1,7 +1,4 @@
-const log = require('../config/log');
 const UserService = require('../services/userService');
-const ErrorTypes = require('../helpers/ErrorTypes');
-const Response = require('../helpers/Response');
 const ServiceInvoke = require('../helpers/ServiceInvoke');
 
 class UserController {
