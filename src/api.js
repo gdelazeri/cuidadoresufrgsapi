@@ -4,7 +4,9 @@ const helmet = require('helmet');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+
 const log = require('./config/log');
+const userRoutes = require('./routes/user');
 
 /* Express initialization */
 const app = express();
@@ -14,6 +16,8 @@ app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
+app.use('/user', userRoutes);
 
 /* Status endpoint */
 app.get('/status', (req, res) => {
