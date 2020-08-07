@@ -20,7 +20,7 @@ class Auth {
           if (onlyAdmin && !userToken.admin) {
             return ReturnError(res);
           }
-          log.info(`User ${userToken.email} - ${req.originalUrl} ${req.body.query}`);
+          log.info(`User ${userToken.email} - ${req.method} ${req.originalUrl}`);
           return next();
         }
         return ReturnError(res);

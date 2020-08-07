@@ -1,4 +1,5 @@
 const express = require('express');
+
 const ContentController = require('../controllers/contentController');
 const Auth = require('../middlewares/auth');
 
