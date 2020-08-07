@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 
 const content = new mongoose.Schema({
   title: { type: String, required: true },
+  categoryId: { type: mongoose.Types.ObjectId, required: false },
   active: { type: Boolean, default: true },
-  feature: { type: Boolean, default: false },
+  featured: { type: Boolean, default: false },
   subtitle: { type: String, required: false },
   type: { type: String, required: false },
   imageUrl: { type: String, required: false },
@@ -51,6 +52,10 @@ class ContentModel {
 
   static count(query) {
     return contentModel.countDocuments(query);
+  }
+
+  static aggregate(pipeline) {
+    return contentModel.aggregate(pipeline);
   }
 }
 

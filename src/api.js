@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 const log = require('./config/log');
 const userRoutes = require('./routes/user');
+const contentRoutes = require('./routes/content');
 const Response = require('./helpers/Response');
 const ErrorTypes = require('./helpers/ErrorTypes');
 
@@ -20,6 +21,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 app.use('/user', userRoutes);
+app.use('/content', contentRoutes);
 
 /* Status endpoint */
 app.get('/status', (req, res) => {
