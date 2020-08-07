@@ -5,7 +5,8 @@ const user = new mongoose.Schema({
   cpf: { type: String, required: false },
   name: { type: String, required: true },
   password: { type: String, required: true },
-  active: { type: Boolean, required: false, default: true },
+  active: { type: Boolean, default: true },
+  admin: { type: Boolean, default: false },
   gender: { type: String, required: false },
   birthDate: { type: Date, required: false },
   scholarity: { type: String, required: false },
@@ -24,7 +25,7 @@ class UserModel {
   }
 
   static getByEmail(email) {
-    return userModel.findOne({ email });
+    return userModel.findOne({ email: email.toLowerCase() });
   }
 
   static getByCPF(cpf) {
@@ -36,6 +37,7 @@ class UserModel {
   }
 
   static add(body) {
+    body.email = body.email.toLowerCase();
     return userModel.create(body);
   }
 

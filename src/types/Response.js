@@ -1,6 +1,6 @@
 class Response {
-  constructor(result, errors) {
-    this.success = false;
+  constructor(result = null, errors = null) {
+    this.success = errors === null || errors === undefined;
     this.errors = null;
     this.result = null;
 

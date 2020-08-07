@@ -13,7 +13,20 @@ class UserController {
       return res.status(400).send(response);
     } catch (e) {
       log.error(e);
-      res.status(500).send(new Response(null, ErrorTypes.U000));
+      res.status(500).send(new Response(null, ErrorTypes.G000));
+    }
+  }
+
+  static async login(req, res) {
+    try {
+      const response = await UserService.login(req.body);
+      if (response.success) {
+        return res.status(200).send(response);
+      }
+      return res.status(400).send(response);
+    } catch (e) {
+      log.error(e);
+      res.status(500).send(new Response(null, ErrorTypes.G000));
     }
   }
 }
