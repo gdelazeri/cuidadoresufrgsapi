@@ -23,6 +23,25 @@ class ContentService {
     }
   }
 
+  static async put(id, body) {
+    try {
+      // Check required fields
+      if (!id || !body.title) {
+        return new Response(null, ErrorTypes.C001);
+      }
+
+      // Get the content
+      body._id = id;
+      const content = await ContentModel.put(body);
+      if (content) {
+        return new Response(content);
+      }
+      return new Response(null, ErrorTypes.G000);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async get(id) {
     try {
       // Check required fields
