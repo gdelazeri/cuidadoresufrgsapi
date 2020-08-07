@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 const UserModel = require('../models/user');
 const ErrorTypes = require('../types/ErrorTypes');
 const Response = require('../types/Response');
@@ -17,9 +19,12 @@ class UserService {
       }
 
       // Add new user
+      const salt = await bcrypt.genSalt(10);
+      body.password = await bcrypt.hashSync(body.password, salt);
       const user = await UserModel.add(body);
 
       if (user) {
+        delete user.password;
         return new Response(user);
       }
       return new Response(null, ErrorTypes.U000);
