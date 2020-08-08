@@ -9,6 +9,8 @@ router.post('/', UserController.post);
 
 router.post('/login', UserController.login);
 
+router.post('/login/refresh', Auth.authenticate(false), UserController.loginRefresh);
+
 router.get('/:id', Auth.authenticate(false), UserController.get);
 
 module.exports = router;

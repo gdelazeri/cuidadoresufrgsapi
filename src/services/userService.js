@@ -66,6 +66,21 @@ class UserService {
     }
   }
 
+  static async loginRefresh(req) {
+    try {
+      const tokenDecoded = Auth.getToken(req);
+      const token = Auth.createToken({
+        _id: tokenDecoded._id,
+        name: tokenDecoded.name,
+        email: tokenDecoded.email,
+        admin: tokenDecoded.admin,
+      });
+      return new Response({ token });
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async get(id) {
     try {
       // Check required fields
