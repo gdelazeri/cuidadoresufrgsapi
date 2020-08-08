@@ -40,7 +40,7 @@ class Auth {
       const decodedToken = jwt.verify(authorizationToken.replace('Bearer ', ''), JWT_SECRET_TOKEN);
       return decodedToken;
     } catch (error) {
-      log.error(`Error on Auth.getToken: "${error}"\nauthorizationToken: ${authorizationToken}`);
+      log.error(`Error on Auth.getToken: "${error}"`);
       return null;
     }
   }
@@ -48,7 +48,7 @@ class Auth {
   static createToken(obj) {
     try {
       const token = jwt.sign(obj, JWT_SECRET_TOKEN, { expiresIn: Number(JWT_SECRET_TOKEN_EXPIRES_IN) });
-      return `Bearer ${token}`;
+      return token;
     } catch (error) {
       log.error(`Error on Auth.createToken: "${error}"`);
       return null;
