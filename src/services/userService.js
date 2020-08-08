@@ -69,13 +69,18 @@ class UserService {
   static async loginRefresh(req) {
     try {
       const tokenDecoded = Auth.getToken(req);
-      const token = Auth.createToken({
-        _id: tokenDecoded._id,
-        name: tokenDecoded.name,
-        email: tokenDecoded.email,
-        admin: tokenDecoded.admin,
-      });
-      return new Response({ token });
+      const user = await UserModel.getById(tokenDecoded._id);
+      if (user.active) {
+        const token = Auth.createToken({
+          _id: tokenDecoded._id,
+          name: tokenDecoded.name,
+          email: tokenDecoded.email,
+          admin: tokenDecoded.admin,
+        });
+        return new Response({ token });
+      } else {
+        return new Response(null, ErrorTypes.U006);
+      }
     } catch (error) {
       throw error;
     }

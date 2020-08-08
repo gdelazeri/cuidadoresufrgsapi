@@ -24,8 +24,10 @@ class UserModel {
     return userModel.find(query).sort({ createdAt: -1 });
   }
 
-  static getByEmail(email) {
-    return userModel.findOne({ email: email.toLowerCase() });
+  static async getByEmail(email) {
+    const user = await userModel.find({ email: email.toLowerCase() }).limit(1);
+    if (user.length === 1) return user[0];
+    return null;
   }
 
   static getById(id) {
