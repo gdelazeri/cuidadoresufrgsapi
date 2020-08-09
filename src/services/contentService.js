@@ -1,6 +1,5 @@
-const bcrypt = require('bcrypt');
-
 const ContentModel = require('../models/content');
+const ContentCategoryModel = require('../models/contentCategory');
 const ErrorTypes = require('../helpers/ErrorTypes');
 const Response = require('../helpers/Response');
 
@@ -52,6 +51,10 @@ class ContentService {
       // Get the content
       const content = await ContentModel.getById(id);
       if (content) {
+        if (content.categoryId) {
+          const category = await ContentCategoryModel.getById(content.categoryId);
+          if (category) content.category = category;
+        }
         return new Response(content);
       }
       return new Response(null, ErrorTypes.C002);
@@ -84,12 +87,28 @@ class ContentService {
           match.$or = searchQuery;
         }
       }
+      
+
+      $arrayElemAt: [
+        '$hospitalizations',
+        0
+      ]
 
       const pipeline = [];
       if (Object.keys(match).length > 0) pipeline.push({ $match: match });
       pipeline.push({ $sort: { createdAt: -1 } });
       pipeline.push({ $skip: Number(page) * Number(pageSize) });
       pipeline.push({ $limit: Number(pageSize) });
+      pipeline.push({
+        $lookup: {
+          from: 'contentCategories',
+          localField: 'categoryId',
+          foreignField: '_id',
+          as: 'categories'
+        }
+      });
+      pipeline.push({ $addFields: { category: { $arrayElemAt: [ '$categories', 0 ] } } });
+      pipeline.push({ $project: { categories: 0 } });
 
       // List contents
       const list = await ContentModel.aggregate(pipeline);
