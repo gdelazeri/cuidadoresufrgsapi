@@ -4,7 +4,7 @@ const content = new mongoose.Schema({
   title: { type: String, required: true },
   categoryId: { type: mongoose.Types.ObjectId, required: false },
   active: { type: Boolean, default: true },
-  featured: { type: Boolean, default: false },
+  home: { type: Boolean, default: false },
   subtitle: { type: String, required: false },
   type: { type: String, required: false },
   imageUrl: { type: String, required: false },

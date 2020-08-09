@@ -60,7 +60,7 @@ class ContentService {
     }
   }
 
-  static async list(page, pageSize, search, featured) {
+  static async list(page, pageSize, search, home) {
     try {
       // Check required fields
       if (isNaN(page) || Number(page) < 0 || isNaN(pageSize) || Number(pageSize) < 0) {
@@ -68,8 +68,8 @@ class ContentService {
       }
 
       const match = { };
-      if (featured !== null && featured !== undefined) {
-        match.featured = featured === 'true';
+      if (home !== null && home !== undefined) {
+        match.home = home === 'true';
       }
       if (typeof search === 'string' && search.length > 0) {
         const split = search.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,' ').split(' ').filter(s => s.length > 0);

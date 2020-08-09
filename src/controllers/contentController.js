@@ -8,7 +8,7 @@ class ContentController {
   
   static get = async (req, res) => ServiceInvoke(ContentService.get(req.params.id), res);
 
-  static list = async (req, res) => ServiceInvoke(ContentService.list(req.query.page, req.query.pageSize, req.query.search, req.query.featured), res);
+  static list = async (req, res) => ServiceInvoke(ContentService.list(req.query.page, req.query.pageSize, req.query.search, req.query.home), res);
 }
 
 module.exports = ContentController;
