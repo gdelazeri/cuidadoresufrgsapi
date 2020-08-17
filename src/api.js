@@ -44,5 +44,5 @@ app.all('*', (req, res) => {
 });
 
 /* Startup */
-const port = process.env.PORT || 7100;
+const port = process.env.PORT || 3000;
 app.listen(port, () => log.info(`API started on port ${port}`));
