@@ -1,6 +1,6 @@
 /* Dependencies */
 require('dotenv').config();
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -16,7 +16,7 @@ const app = express();
 require('./config/db');
 
 app.use(cors());
-app.use(helmet());
+// app.use(helmet());
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
