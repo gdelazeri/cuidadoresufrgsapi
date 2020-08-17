@@ -27,6 +27,6 @@
     "winston": "2.3.1"
   },
   "devDependencies": {
-    "nodemon": "1.19.3",
+    "nodemon": "1.19.3"
   }
 }
