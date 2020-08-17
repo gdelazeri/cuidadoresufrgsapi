@@ -10,7 +10,7 @@ const {
 } = process.env;
 
 // connect to the database
-mongoose.connect(`mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_ENDPOINT}/${DB_NAME}?retryWrites=true&w=majority`, { useNewUrlParser: true });
+mongoose.connect(`mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_ENDPOINT}/${DB_NAME}?retryWrites=true&w=majority`, { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
 
