@@ -9,6 +9,7 @@ const content = new mongoose.Schema({
   type: { type: String, required: false },
   imageUrl: { type: String, required: false },
   body: [{
+    topic: { type: String, required: false },
     text: { type: String, required: false },
     type: { type: String, required: false },
     url: { type: String, required: false },
