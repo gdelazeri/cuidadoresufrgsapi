@@ -8,6 +8,8 @@ const ErrorTypes = {
   U006: { code: 'U006', message: 'Usuário inexistente ou desativado.' },
   C001: { code: 'C001', message: 'Preencha todos os campos obrigatórios.' },
   C002: { code: 'C002', message: 'Conteúdo não encontrado.' },
+  F001: { code: 'F001', message: 'Preencha todos os campos obrigatórios.' },
+  F002: { code: 'F002', message: 'Formulário não encontrado.' },
 }
 
 module.exports = ErrorTypes;
