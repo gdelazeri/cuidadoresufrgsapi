@@ -72,10 +72,10 @@ class UserService {
       const user = await UserModel.getById(tokenDecoded._id);
       if (user.active) {
         const token = Auth.createToken({
-          _id: tokenDecoded._id,
-          name: tokenDecoded.name,
-          email: tokenDecoded.email,
-          admin: tokenDecoded.admin,
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          admin: user.admin,
         });
         return new Response({ token });
       } else {
