@@ -70,7 +70,7 @@ class UserService {
     try {
       const tokenDecoded = Auth.getToken(req);
       const user = await UserModel.getById(tokenDecoded._id);
-      if (user.active) {
+      if (user && user.active) {
         const token = Auth.createToken({
           _id: user._id,
           name: user.name,
