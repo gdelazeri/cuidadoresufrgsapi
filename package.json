@@ -2,7 +2,7 @@
   "name": "cuidadoresufrgsapi",
   "version": "1.0.0",
   "description": "",
-  "main": "api.js",
+  "main": "src/api.js",
   "scripts": {
     "start": "node src/api.js"
   },
@@ -28,9 +28,5 @@
   },
   "devDependencies": {
     "nodemon": "1.19.3",
-  },
-  "bugs": {
-    "url": "https://github.com/gdelazeri/cuidadoresufrgsapi/issues"
-  },
-  "homepage": "https://github.com/gdelazeri/cuidadoresufrgsapi#readme"
+  }
 }
