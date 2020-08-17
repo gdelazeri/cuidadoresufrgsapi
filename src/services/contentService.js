@@ -65,12 +65,7 @@ class ContentService {
 
   static async list(page, pageSize, search, home) {
     try {
-      // Check required fields
-      if (isNaN(page) || Number(page) < 0 || isNaN(pageSize) || Number(pageSize) < 0) {
-        return new Response(null, ErrorTypes.C001);
-      }
-
-      const match = { };
+      const match = { active: true };
       if (home !== null && home !== undefined) {
         match.home = home === 'true';
       }
@@ -88,17 +83,13 @@ class ContentService {
         }
       }
       
-
-      $arrayElemAt: [
-        '$hospitalizations',
-        0
-      ]
-
       const pipeline = [];
-      if (Object.keys(match).length > 0) pipeline.push({ $match: match });
+      pipeline.push({ $match: match });
       pipeline.push({ $sort: { createdAt: -1 } });
-      pipeline.push({ $skip: Number(page) * Number(pageSize) });
-      pipeline.push({ $limit: Number(pageSize) });
+      if (!isNaN(page) && Number(page) >= 0 && !isNaN(pageSize) && Number(pageSize) > 0) {
+        pipeline.push({ $skip: Number(page) * Number(pageSize) });
+        pipeline.push({ $limit: Number(pageSize) });
+      }
       pipeline.push({
         $lookup: {
           from: 'contentCategories',
