@@ -10,6 +10,7 @@ const form = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: false },
   type: { type: String, required: false },
+  imageUrl: { type: String, required: false },
   questions: [{
     type: { type: String, required: false },
     label: { type: String, required: false },
