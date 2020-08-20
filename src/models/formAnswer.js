@@ -4,7 +4,7 @@ const formAnswer = new mongoose.Schema({
   userId: { type: mongoose.Types.ObjectId, required: true },
   formId: { type: mongoose.Types.ObjectId, required: true },
   questions: [{
-    title: { type: String, required: false },
+    label: { type: String, required: false },
     value: { type: String, required: false },
   }],
   updatedAt: { type: Date, required: false },
