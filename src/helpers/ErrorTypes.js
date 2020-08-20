@@ -10,6 +10,8 @@ const ErrorTypes = {
   C002: { code: 'C002', message: 'Conteúdo não encontrado.' },
   F001: { code: 'F001', message: 'Preencha todos os campos obrigatórios.' },
   F002: { code: 'F002', message: 'Formulário não encontrado.' },
+  A001: { code: 'A001', message: 'Preencha todos os campos obrigatórios.' },
+  A002: { code: 'A002', message: 'Resposta não encontrada.' },
 }
 
 module.exports = ErrorTypes;

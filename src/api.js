@@ -9,6 +9,7 @@ const log = require('./config/log');
 const userRoutes = require('./routes/user');
 const contentRoutes = require('./routes/content');
 const formRoutes = require('./routes/form');
+const formAnswerRoutes = require('./routes/formAnswer');
 const Response = require('./helpers/Response');
 const ErrorTypes = require('./helpers/ErrorTypes');
 
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use('/user', userRoutes);
 app.use('/content', contentRoutes);
 app.use('/form', formRoutes);
+app.use('/formAnswer', formAnswerRoutes);
 
 /* Status endpoint */
 app.get('/status', (req, res) => {
