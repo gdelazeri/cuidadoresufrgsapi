@@ -30,6 +30,11 @@ const form = new mongoose.Schema({
     imageUrl: { type: String, required: false },
     questions: { type: [Number], required: false },
   }],
+  classification: [{
+    label: { type: String, required: false },
+    min: { type: Number, required: false },
+    max: { type: Number, required: false },
+  }],
   createdAt: { type: Date, required: true, default: Date.now },
 });
 

@@ -24,11 +24,13 @@ class FormCalculator {
         if (Array.isArray(this.form.domains[i].questions)) {
           const questions = this.answers.questions.filter((q, idx) => this.form.domains[i].questions.includes(idx));
           const sum = questions.reduce((total, item) => total + parseInt(item.value, 10), 0);
+          const value = sum / questions.length;
+          const classification = this.form.classification.find(c => value >= c.min && value <= c.max);
           result.push({
             title: this.form.domains[i].title,
             text: this.form.domains[i].text,
+            classification: classification ? classification.label : null,
             imageUrl: this.form.domains[i].imageUrl,
-            value: sum / questions.length,
           });
         }
       }
