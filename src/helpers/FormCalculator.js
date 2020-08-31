@@ -36,7 +36,7 @@ class FormCalculator {
       }
       return result;
     } catch (e) {
-      return [];
+      throw e;
     }
   }
 }
