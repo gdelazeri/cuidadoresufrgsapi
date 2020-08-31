@@ -13,4 +13,6 @@ router.get('/:id', Auth.authenticate(false), FormController.get);
 
 router.get('/', Auth.authenticate(false), FormController.list);
 
+router.get('/result/:id', Auth.authenticate(false), FormController.result);
+
 module.exports = router;

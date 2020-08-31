@@ -11,6 +11,11 @@ const form = new mongoose.Schema({
   description: { type: String, required: false },
   type: { type: String, required: false },
   imageUrl: { type: String, required: false },
+  introduction: {
+    title: { type: String, required: false },
+    text: { type: String, required: false },
+    imageUrl: { type: String, required: false },
+  },
   questions: [{
     type: { type: String, required: false },
     label: { type: String, required: false },
@@ -19,6 +24,12 @@ const form = new mongoose.Schema({
     help: { type: String, required: false },
   }],
   options: [option],
+  domains: [{
+    title: { type: String, required: false },
+    text: { type: String, required: false },
+    imageUrl: { type: String, required: false },
+    questions: { type: [Number], required: false },
+  }],
   createdAt: { type: Date, required: true, default: Date.now },
 });
 

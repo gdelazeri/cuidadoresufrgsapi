@@ -1,6 +1,8 @@
 const FormModel = require('../models/form');
+const FormAnswerModel = require('../models/formAnswer');
 const ErrorTypes = require('../helpers/ErrorTypes');
 const Response = require('../helpers/Response');
+const FormCalculator = require('../helpers/FormCalculator');
 
 class FormService {
   static async post(body) {
@@ -90,6 +92,30 @@ class FormService {
         return new Response(list);
       }
       return new Response(null, ErrorTypes.G000);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async result(id, userId) {
+    try {
+      // Check required fields
+      if (!id) {
+        return new Response(null, ErrorTypes.F002);
+      }
+      
+      // Get the form
+      const form = await FormModel.getById(id);
+      if (form) {
+        const formAnswer = await FormAnswerModel.get(userId, id);
+        if (formAnswer) {
+          const formCalculator = new FormCalculator(form, formAnswer);
+          const result = formCalculator.calculate();
+          return new Response(result);
+        }
+        return new Response(null, ErrorTypes.F002);
+      }
+      return new Response(null, ErrorTypes.F002);
     } catch (error) {
       throw error;
     }

@@ -9,6 +9,8 @@ class FormController {
   static get = async (req, res) => ServiceInvoke(FormService.get(req.params.id), res);
 
   static list = async (req, res) => ServiceInvoke(FormService.list(req.query.page, req.query.pageSize, req.query.search), res);
+ 
+  static result = async (req, res) => ServiceInvoke(FormService.result(req.params.id, req.query.userId), res);
 }
 
 module.exports = FormController;
