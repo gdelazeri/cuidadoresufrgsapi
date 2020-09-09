@@ -7,6 +7,7 @@ const formAnswer = new mongoose.Schema({
     label: { type: String, required: false },
     value: { type: String, required: false },
   }],
+  finished: { type: Boolean, required: true, default: false },
   updatedAt: { type: Date, required: false },
   createdAt: { type: Date, required: true, default: Date.now },
 });
@@ -50,6 +51,16 @@ class FormAnswerModel {
 
   static count(query) {
     return formAnswerModel.countDocuments(query);
+  }
+
+  static finish(id) {
+    return formAnswerModel.findOneAndUpdate({
+      _id: mongoose.Types.ObjectId(id),
+    }, {
+      $set: { finished: true },
+    }, {
+      new: true,
+    });
   }
 }
 

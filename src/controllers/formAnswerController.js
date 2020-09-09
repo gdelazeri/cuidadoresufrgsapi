@@ -7,6 +7,8 @@ class FormAnswerController {
   static put = async (req, res) => ServiceInvoke(FormAnswerService.put(req.params.id, req.body), res);
   
   static get = async (req, res) => ServiceInvoke(FormAnswerService.get(req.query.userId, req.query.formId), res);
+  
+  static finish = async (req, res) => ServiceInvoke(FormAnswerService.finish(req.params.id), res);
 }
 
 module.exports = FormAnswerController;

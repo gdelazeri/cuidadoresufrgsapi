@@ -57,6 +57,24 @@ class FormAnswerService {
       throw error;
     }
   }
+
+  static async finish(id) {
+    try {
+      // Check required fields
+      if (!id) {
+        return new Response(null, ErrorTypes.A002);
+      }
+      
+      // Get the form answer
+      const formAnswer = await FormAnswerModel.finish(id);
+      if (formAnswer) {
+        return new Response(formAnswer);
+      }
+      return new Response(null, ErrorTypes.A002);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = FormAnswerService;
