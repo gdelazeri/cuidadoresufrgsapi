@@ -109,7 +109,7 @@ class FormService {
           }
         });
         pipeline.push({ $unwind: '$formAnswer' });
-        pipeline.push({ $addFields: { formAnswerFinished: '$formAnswer.finished' } });
+        pipeline.push({ $addFields: { finished: '$formAnswer.finished' } });
       }
 
       pipeline.push({
