@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const FormModel = require('../models/form');
 const FormAnswerModel = require('../models/formAnswer');
 const ErrorTypes = require('../helpers/ErrorTypes');
@@ -60,7 +62,7 @@ class FormService {
     }
   }
 
-  static async list(page, pageSize, search) {
+  static async list(userId, page, pageSize, search) {
     try {
       const match = { active: true };
       if (typeof search === 'string' && search.length > 0) {
@@ -80,11 +82,47 @@ class FormService {
       const pipeline = [];
       pipeline.push({ $match: match });
       pipeline.push({ $sort: { createdAt: -1 } });
+
       if (!isNaN(page) && Number(page) >= 0 && !isNaN(pageSize) && Number(pageSize) > 0) {
         pipeline.push({ $skip: Number(page) * Number(pageSize) });
         pipeline.push({ $limit: Number(pageSize) });
       }
-      pipeline.push({ $project: { questions: 0, options: 0 } });
+
+      if (typeof userId === 'string' && userId.length > 0) {
+        pipeline.push({
+          $lookup: {
+            from: 'formAnswers',
+            localField: '_id',
+            foreignField: 'formId',
+            as: 'formAnswers'
+          }
+        });
+        pipeline.push({
+          $addFields: {
+            formAnswer: {
+              $filter: {
+                input: '$formAnswers',
+                as: "f",
+                cond: { $eq: ["$$f.userId", mongoose.Types.ObjectId(userId)] }
+              }
+            }
+          }
+        });
+        pipeline.push({ $unwind: '$formAnswer' });
+        pipeline.push({ $addFields: { formAnswerFinished: '$formAnswer.finished' } });
+      }
+
+      pipeline.push({
+        $project: {
+          introduction: 0,
+          classification: 0,
+          domains: 0,
+          questions: 0,
+          options: 0,
+          formAnswers: 0,
+          formAnswer: 0,
+        }
+      });
 
       // List forms
       const list = await FormModel.aggregate(pipeline);
