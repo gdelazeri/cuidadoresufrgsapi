@@ -14,8 +14,8 @@ class FormCalculator {
       }  
     }
     return [{
-      title: '',
-      text: 'Obrigado por responder o questionário!',
+      title: 'Obrigado por responder o questionário!',
+      text: '',
     }];
   }
 
