@@ -16,7 +16,6 @@ const form = new mongoose.Schema({
     text: { type: String, required: false },
     imageUrl: { type: String, required: false },
   },
-  resultTitle: { type: String, required: false },
   questions: [{
     type: { type: String, required: false },
     label: { type: String, required: false },

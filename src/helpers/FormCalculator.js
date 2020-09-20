@@ -1,5 +1,4 @@
 const FormTypes = require('../helpers/FormTypes');
-const { response } = require('express');
 
 class FormCalculator {
   constructor(form, answers) {
@@ -14,7 +13,10 @@ class FormCalculator {
           return this.calculateAvgAnswersDomain();
       }  
     }
-    return [];
+    return [{
+      title: '',
+      text: 'Obrigado por responder o questionário!',
+    }];
   }
 
   calculateAvgAnswersDomain() {
