@@ -57,7 +57,7 @@ class UserService {
       const successfull = await bcrypt.compare(body.password, user.password);
       if (successfull) {
         const token = Auth.createToken({ _id: user._id, name: user.name, email: user.email, admin: user.admin });
-        return new Response({ token });
+        return new Response({ token, consentTermAcceptedAt: user.consentTermAcceptedAt });
       }
 
       return new Response(null, ErrorTypes.U004);
@@ -77,7 +77,7 @@ class UserService {
           email: user.email,
           admin: user.admin,
         });
-        return new Response({ token });
+        return new Response({ token, consentTermAcceptedAt: user.consentTermAcceptedAt });
       } else {
         return new Response(null, ErrorTypes.U006);
       }
