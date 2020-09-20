@@ -103,6 +103,25 @@ class UserService {
       throw error;
     }
   }
+  
+  static async acceptConsentTerm(id) {
+    try {
+      // Check required fields
+      if (!id) {
+        return new Response(null, ErrorTypes.U005);
+      }
+      
+      // Get the user
+      const user = await UserModel.getById(id);
+      if (user) {
+        user.consentTermAcceptedAt = new Date();
+        return new Response(user);
+      }
+      return new Response(null, ErrorTypes.U005);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = UserService;

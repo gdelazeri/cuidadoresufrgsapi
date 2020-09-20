@@ -14,6 +14,7 @@ const user = new mongoose.Schema({
   phone: { type: String, required: false },
   city: { type: String, required: false },
   uf: { type: String, required: false },
+  consentTermAcceptedAt: { type: Date, required: false },
   createdAt: { type: Date, required: true, default: Date.now },
 });
 

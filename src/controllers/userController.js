@@ -9,6 +9,8 @@ class UserController {
   static loginRefresh = async (req, res) => ServiceInvoke(UserService.loginRefresh(req), res);
 
   static get = async (req, res) => ServiceInvoke(UserService.get(req.params.id), res);
+ 
+  static acceptConsentTerm = async (req, res) => ServiceInvoke(UserService.acceptConsentTerm(req.params.id), res);
 }
 
 module.exports = UserController;
