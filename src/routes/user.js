@@ -13,6 +13,6 @@ router.post('/login/refresh', Auth.authenticate(false), UserController.loginRefr
 
 router.get('/:id', Auth.authenticate(false), UserController.get);
 
-router.patch('/acceptConsentTerm/:id', Auth.authenticate(false), UserController.acceptConsentTerm);
+router.patch('/consentTerm/accept/:id', Auth.authenticate(false), UserController.acceptConsentTerm);
 
 module.exports = router;
