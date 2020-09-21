@@ -9,8 +9,8 @@ const ErrorTypes = {
   U004: { code: 'U004', message: 'Usuário e/ou senha inválidos.' },
   U005: { code: 'U005', message: 'Usuário não encontrado.' },
   U006: { code: 'U006', message: 'Usuário inexistente ou desativado.' },
-  U007: { code: 'U007', message: 'Token expirado.' },
-  U008: { code: 'U008', message: 'Token inválido.' },
+  U007: { code: 'U007', message: 'Código de verificação expirado.' },
+  U008: { code: 'U008', message: 'Código de verificação inválido.' },
   U009: { code: 'U009', message: 'A senha informada não respeita os critérios mínimos de segurança.' },
   
   // Content error
