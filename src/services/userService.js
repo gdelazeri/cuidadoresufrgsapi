@@ -170,7 +170,7 @@ class UserService {
     }
   }
 
-  static async updatePassword(email, token, password) {
+  static async updatePassword(email, token, password, passwordConfirm) {
     try {
       // Check required fields
       if (!email) {
@@ -185,7 +185,9 @@ class UserService {
         } else if (user.token && user.token !== token) {
           return new Response(null, ErrorTypes.U008);
         } else {
-          if (typeof password === 'string' && password.length > 0) {
+          if (password !== passwordConfirm) {
+            return new Response(null, ErrorTypes.U010);
+          } else if (typeof password === 'string' && password.length > 0) {
             const salt = await bcrypt.genSalt(10);
             user.password = await bcrypt.hashSync(password, salt);
             await UserModel.put(user);
