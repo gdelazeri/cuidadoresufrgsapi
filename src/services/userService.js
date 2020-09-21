@@ -125,6 +125,25 @@ class UserService {
     }
   }
 
+  static async getConsentTerm(id) {
+    try {
+      // Check required fields
+      if (!id) {
+        return new Response(null, ErrorTypes.U005);
+      }
+      
+      // Get the user
+      const user = await UserModel.getById(id);
+      if (user) {
+        const ConsentTerm = require('../helpers/ConsentTerm');
+        return new Response(ConsentTerm.replace('{name}', user.name));
+      }
+      return new Response(null, ErrorTypes.U005);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async passwordRecoverToken(email) {
     try {
       // Check required fields

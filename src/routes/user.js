@@ -13,6 +13,8 @@ router.post('/login/refresh', Auth.authenticate(false), UserController.loginRefr
 
 router.patch('/consentTerm/accept/:id', Auth.authenticate(false), UserController.acceptConsentTerm);
 
+router.get('/consentTerm/:id', Auth.authenticate(false), UserController.getConsentTerm);
+
 router.get('/password/recoverToken/:email', UserController.passwordRecoverToken);
 
 router.post('/password/recoverToken/check/:email', UserController.passwordRecoverTokenCheck);
