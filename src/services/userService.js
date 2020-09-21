@@ -116,6 +116,7 @@ class UserService {
       const user = await UserModel.getById(id);
       if (user) {
         user.consentTermAcceptedAt = new Date();
+        await UserModel.put(user);
         return new Response(true);
       }
       return new Response(null, ErrorTypes.U005);
