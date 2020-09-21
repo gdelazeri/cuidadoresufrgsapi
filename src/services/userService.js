@@ -4,6 +4,7 @@ const Auth = require('../middlewares/auth');
 const UserModel = require('../models/user');
 const ErrorTypes = require('../helpers/ErrorTypes');
 const Response = require('../helpers/Response');
+const TokenGenerator = require('../helpers/TokenGenerator');
 
 class UserService {
   static async post(body) {
@@ -115,7 +116,84 @@ class UserService {
       const user = await UserModel.getById(id);
       if (user) {
         user.consentTermAcceptedAt = new Date();
-        return new Response(user);
+        return new Response(true);
+      }
+      return new Response(null, ErrorTypes.U005);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async passwordRecoverToken(email) {
+    try {
+      // Check required fields
+      if (!email) {
+        return new Response(null, ErrorTypes.U005);
+      }
+      
+      // Get the user
+      const user = await UserModel.getByEmail(email);
+      if (user) {
+        const minutes = 20;
+        user.token = TokenGenerator();
+        user.tokenExpiresAt = new Date(new Date().getTime() + minutes*60000);
+        await UserModel.put(user);
+        return new Response(true);
+      }
+      return new Response(null, ErrorTypes.U005);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async passwordRecoverTokenCheck(email, token) {
+    try {
+      // Check required fields
+      if (!email) {
+        return new Response(null, ErrorTypes.U005);
+      }
+      
+      // Get the user
+      const user = await UserModel.getByEmail(email);
+      if (user) {
+        if (user.tokenExpiresAt && user.tokenExpiresAt < new Date()) {
+          return new Response(null, ErrorTypes.U007);
+        } else if (user.token !== token) {
+          return new Response(null, ErrorTypes.U008);
+        } else {
+          return new Response(true);
+        }
+      }
+      return new Response(null, ErrorTypes.U005);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async updatePassword(email, token, password) {
+    try {
+      // Check required fields
+      if (!email) {
+        return new Response(null, ErrorTypes.U005);
+      }
+      
+      // Get the user
+      const user = await UserModel.getByEmail(email);
+      if (user) {
+        if (user.tokenExpiresAt && user.tokenExpiresAt < new Date()) {
+          return new Response(null, ErrorTypes.U007);
+        } else if (user.token && user.token !== token) {
+          return new Response(null, ErrorTypes.U008);
+        } else {
+          if (typeof password === 'string' && password.length > 0) {
+            const salt = await bcrypt.genSalt(10);
+            user.password = await bcrypt.hashSync(password, salt);
+            await UserModel.put(user);
+            return new Response(true);
+          } else {
+            return new Response(null, ErrorTypes.U009);
+          }
+        }
       }
       return new Response(null, ErrorTypes.U005);
     } catch (error) {

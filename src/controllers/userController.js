@@ -11,6 +11,12 @@ class UserController {
   static get = async (req, res) => ServiceInvoke(UserService.get(req.params.id), res);
  
   static acceptConsentTerm = async (req, res) => ServiceInvoke(UserService.acceptConsentTerm(req.params.id), res);
+  
+  static passwordRecoverToken = async (req, res) => ServiceInvoke(UserService.passwordRecoverToken(req.params.email), res);
+  
+  static passwordRecoverTokenCheck = async (req, res) => ServiceInvoke(UserService.passwordRecoverTokenCheck(req.params.email, req.body.token), res);
+  
+  static updatePassword = async (req, res) => ServiceInvoke(UserService.updatePassword(req.params.email, req.body.token, req.body.password), res);
 }
 
 module.exports = UserController;

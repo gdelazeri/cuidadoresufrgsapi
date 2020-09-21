@@ -15,6 +15,8 @@ const user = new mongoose.Schema({
   city: { type: String, required: false },
   uf: { type: String, required: false },
   consentTermAcceptedAt: { type: Date, required: false },
+  token: { type: String, required: false },
+  tokenExpiresAt: { type: Date, required: false },
   createdAt: { type: Date, required: true, default: Date.now },
 });
 
