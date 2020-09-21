@@ -4,7 +4,7 @@ const ConsentTerm = `<!DOCTYPE html>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width'>
     <title>AMI - Termo de Consentimento</title>
-    <style> body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 20px; } </style>
+    <style> body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding-left: 15px; padding-right: 15px; padding-top: 15px; } </style>
   </head>
   <body>
     <p style="text-align: center;"><b>TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO (TCLE)</b></p>
