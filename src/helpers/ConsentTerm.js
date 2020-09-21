@@ -7,9 +7,9 @@ const ConsentTerm = `<!DOCTYPE html>
     <style> body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 20px; } </style>
   </head>
   <body>
-    <h3 style="text-align: center;">TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO (TCLE)</h3>
-    <h3 style="text-align: center;">UNIVERSIDADE FEDERAL DO RIO GRANDE DO SUL</h3>
-    <h3 style="text-align: center;">ESCOLA DE ENFERMAGEM</h3>
+    <p style="text-align: center;"><b>TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO (TCLE)</b></p>
+    <p style="text-align: center;"><b>UNIVERSIDADE FEDERAL DO RIO GRANDE DO SUL</b></p>
+    <p style="text-align: center;"><b>ESCOLA DE ENFERMAGEM</b></p>
     <p>Projeto de pesquisa: NOME do projeto</p>
     <p>Eu, Ana Karina Silva Da Rocha Tanaka, pesquisadora responsável pelo projeto juntamente com o Professor Leandro Krug Wives, convido a participar como voluntário deste estudo que tem como objetivo avaliar a qualidade de vida dos trabalhadores de instituições de longa permanência para idosos. Destaco a importância de abordar esta temática que vem com o propósito de contribuir para melhorias no cuidado à saúde dos trabalhadores.</p>
     <p>Os pesquisadores desta investigação se comprometem a seguir o que consta na Resolução n°466/12 que trata sobre pesquisas em seres humanos. Você tem liberdade ou não de participar da pesquisa, conforme disponibilidade e interesse em contribuir e, a qualquer momento, você poderá desistir e retirar seu consentimento. Você não terá custo nem receberá por participar. Sua recusa não trará nenhum prejuízo em sua relação com o pesquisador (a) ou com a instituição.</p>
