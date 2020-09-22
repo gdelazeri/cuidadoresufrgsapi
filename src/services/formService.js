@@ -115,7 +115,7 @@ class FormService {
         });
         pipeline.push({
           $addFields: {
-            formAnswerFinished: { $cond: [ { $eq: [{$size: "$formAnswer" }, 1 ] }, true, false ] }
+            finished: { $cond: [ { $eq: [ { $size: "$formAnswer" }, 1 ] }, true, false ] }
           }
         });
       }
