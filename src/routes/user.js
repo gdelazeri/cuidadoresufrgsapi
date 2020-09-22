@@ -19,6 +19,8 @@ router.get('/password/recoverToken/:email', UserController.passwordRecoverToken)
 
 router.post('/password/recoverToken/check/:email', UserController.passwordRecoverTokenCheck);
 
-router.patch('/password/update/:email', UserController.updatePassword);
+router.patch('/password/update/:email', UserController.passwordUpdate);
+
+router.get('/password/rules', UserController.passwordRules);
 
 module.exports = router;

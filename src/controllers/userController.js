@@ -18,7 +18,9 @@ class UserController {
   
   static passwordRecoverTokenCheck = async (req, res) => ServiceInvoke(UserService.passwordRecoverTokenCheck(req.params.email, req.body.token), res);
   
-  static updatePassword = async (req, res) => ServiceInvoke(UserService.updatePassword(req.params.email, req.body.token, req.body.password, req.body.passwordConfirm), res);
+  static passwordUpdate = async (req, res) => ServiceInvoke(UserService.passwordUpdate(req.params.email, req.body.token, req.body.password, req.body.passwordConfirm), res);
+
+  static passwordRules = async (req, res) => ServiceInvoke(UserService.passwordRules(), res);
 }
 
 module.exports = UserController;

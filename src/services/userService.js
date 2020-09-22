@@ -200,7 +200,7 @@ class UserService {
     }
   }
 
-  static async updatePassword(email, token, password, passwordConfirm) {
+  static async passwordUpdate(email, token, password, passwordConfirm) {
     try {
       // Check required fields
       if (!email) {
@@ -232,6 +232,24 @@ class UserService {
       throw error;
     }
   }
+
+  static async passwordRules() {
+    try {
+      const response = {
+        title: 'A senha precisa conter no mínimo 8 caracteres e pelo menos 3 dos seguintes critérios abaixo:',
+        rules: [
+          '- Conter letra maiúscula',
+          '- Conter letra minúscula',
+          '- Conter dígito de 0 a 9',
+          '- Conter caracter especial',
+        ]
+      }
+      return new Response(response);
+    } catch (error) {
+      throw error;
+    }
+  }
+
 }
 
 module.exports = UserService;
