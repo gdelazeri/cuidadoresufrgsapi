@@ -5,6 +5,7 @@ const UserModel = require('../models/user');
 const ErrorTypes = require('../helpers/ErrorTypes');
 const Response = require('../helpers/Response');
 const TokenGenerator = require('../helpers/TokenGenerator');
+const EmailService = require('./emailService');
 
 class UserService {
   static async post(body) {
@@ -158,6 +159,15 @@ class UserService {
         user.token = TokenGenerator();
         user.tokenExpiresAt = new Date(new Date().getTime() + minutes*60000);
         await UserModel.put(user);
+        const html = `
+          <p>Olá ${user.name.toUpperCase()},</p>
+          <br />
+          <p>Seu código de recuperação de senha é <b>${user.token}</b>.</p>
+          <p>Este código é válido por apenas <b>${minutes} minutos!</b></p>
+          <br />
+          <p>Volte para o Aplicativo e insira o código acima para alterar sua senha de acesso.</p>
+        `
+        await EmailService.send(user.email, `Seu código de recuperação de senha é ${user.token}`, html);
         return new Response(true);
       }
       return new Response(null, ErrorTypes.U005);
