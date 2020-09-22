@@ -103,13 +103,21 @@ class FormService {
               $filter: {
                 input: '$formAnswers',
                 as: "f",
-                cond: { $eq: ["$$f.userId", mongoose.Types.ObjectId(userId)] }
+                cond: {
+                  $and: [
+                    { $eq: ["$$f.userId", mongoose.Types.ObjectId(userId)] },
+                    { $eq: ["$$f.finished", true] }
+                  ]
+                }
               }
             }
           }
         });
-        pipeline.push({ $unwind: '$formAnswer' });
-        pipeline.push({ $addFields: { finished: '$formAnswer.finished' } });
+        pipeline.push({
+          $addFields: {
+            formAnswerFinished: { $cond: [ { $eq: [{$size: "$formAnswer" }, 1 ] }, true, false ] }
+          }
+        });
       }
 
       pipeline.push({
