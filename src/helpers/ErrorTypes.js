@@ -11,8 +11,7 @@ const ErrorTypes = {
   U006: { code: 'U006', message: 'Usuário inexistente ou desativado.' },
   U007: { code: 'U007', message: 'Código de verificação expirado.' },
   U008: { code: 'U008', message: 'Código de verificação inválido.' },
-  U009: { code: 'U009', message: 'A senha informada não respeita os critérios mínimos de segurança.' },
-  U010: { code: 'U010', message: 'As senhas informadas não conferem.' },
+  U009: { code: 'U009', message: 'A senha informada não respeita os critérios de segurança.' },
   
   // Content error
   C001: { code: 'C001', message: 'Preencha todos os campos obrigatórios.' },

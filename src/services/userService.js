@@ -6,6 +6,7 @@ const ErrorTypes = require('../helpers/ErrorTypes');
 const Response = require('../helpers/Response');
 const TokenGenerator = require('../helpers/TokenGenerator');
 const EmailService = require('./emailService');
+const ValidatePassword = require('../helpers/ValidatePassword');
 
 class UserService {
   static async post(body) {
@@ -19,6 +20,10 @@ class UserService {
       const emailExistent = await UserModel.getByEmail(body.email);
       if (emailExistent) {
         return new Response(null, ErrorTypes.U001);
+      }
+
+      if (!ValidatePassword(body.password)) {
+        return new Response(null, ErrorTypes.U009);
       }
 
       // Add new user
@@ -200,7 +205,7 @@ class UserService {
     }
   }
 
-  static async passwordUpdate(email, token, password, passwordConfirm) {
+  static async passwordUpdate(email, token, password) {
     try {
       // Check required fields
       if (!email) {
@@ -215,9 +220,7 @@ class UserService {
         } else if (user.token && user.token !== token) {
           return new Response(null, ErrorTypes.U008);
         } else {
-          if (password !== passwordConfirm) {
-            return new Response(null, ErrorTypes.U010);
-          } else if (typeof password === 'string' && password.length > 0) {
+          if (typeof password === 'string' && password.length > 0 && ValidatePassword(password)) {
             const salt = await bcrypt.genSalt(10);
             user.password = await bcrypt.hashSync(password, salt);
             await UserModel.put(user);
