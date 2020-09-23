@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.post('/', UserController.post);
 
+router.put('/', Auth.authenticate(false), UserController.put);
+
 router.post('/login', UserController.login);
 
 router.post('/login/refresh', Auth.authenticate(false), UserController.loginRefresh);

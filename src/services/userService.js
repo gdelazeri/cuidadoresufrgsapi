@@ -43,6 +43,25 @@ class UserService {
     }
   }
 
+  static async put(req) {
+    try {
+      const tokenDecoded = Auth.getToken(req);
+      const body = req.body;
+      if (tokenDecoded) {
+        // Get the user
+        let user = await UserModel.getById(tokenDecoded._id);
+        if (user) {
+          body._id = tokenDecoded._id;
+          user = await UserModel.put(body);
+          return new Response(user);
+        }
+      }
+      return new Response(null, ErrorTypes.U005);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async login(body) {
     try {
       // Check required fields

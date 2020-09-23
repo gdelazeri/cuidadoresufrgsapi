@@ -4,6 +4,8 @@ const ServiceInvoke = require('../helpers/ServiceInvoke');
 class UserController {
   static post = async (req, res) => ServiceInvoke(UserService.post(req.body), res);
 
+  static put = async (req, res) => ServiceInvoke(UserService.put(req), res);
+
   static login = async (req, res) => ServiceInvoke(UserService.login(req.body), res);
   
   static loginRefresh = async (req, res) => ServiceInvoke(UserService.loginRefresh(req), res);

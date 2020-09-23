@@ -47,7 +47,7 @@ class UserModel {
     return userModel.findOneAndUpdate(
       query,
       body,
-      { new: true },
+      { new: true, projection: { password: false } },
     );
   }
 
