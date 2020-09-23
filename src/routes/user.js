@@ -11,6 +11,10 @@ router.post('/login', UserController.login);
 
 router.post('/login/refresh', Auth.authenticate(false), UserController.loginRefresh);
 
+router.get('/', Auth.authenticate(false), UserController.get);
+
+router.get('/:id', Auth.authenticate(true), UserController.getById);
+
 router.patch('/consentTerm/accept/:id', Auth.authenticate(false), UserController.acceptConsentTerm);
 
 router.get('/consentTerm/:id', Auth.authenticate(false), UserController.getConsentTerm);

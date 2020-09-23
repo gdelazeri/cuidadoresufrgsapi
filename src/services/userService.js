@@ -76,6 +76,7 @@ class UserService {
   static async loginRefresh(req) {
     try {
       const tokenDecoded = Auth.getToken(req);
+        // Get the user
       const user = await UserModel.getById(tokenDecoded._id);
       if (user && user.active) {
         const token = Auth.createToken({
@@ -93,7 +94,23 @@ class UserService {
     }
   }
 
-  static async get(id) {
+  static async get(req) {
+    try {
+      const tokenDecoded = Auth.getToken(req);
+      if (tokenDecoded) {
+        // Get the user
+        const user = await UserModel.getById(tokenDecoded._id);
+        if (user) {
+          return new Response(user);
+        }
+      }
+      return new Response(null, ErrorTypes.U005);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async getById(id) {
     try {
       // Check required fields
       if (!id) {
