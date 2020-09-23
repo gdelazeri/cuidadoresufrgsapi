@@ -14,6 +14,7 @@ const content = new mongoose.Schema({
     type: { type: String, required: false },
     url: { type: String, required: false },
   }],
+  text: { type: String, required: false },
   source: { type: String, required: false },
   createdAt: { type: Date, required: true, default: Date.now },
 });
