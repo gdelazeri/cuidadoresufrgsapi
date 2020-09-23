@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 
 const Auth = require('../middlewares/auth');
 const UserModel = require('../models/user');
+const FormAnswerModel = require('../models/formAnswer');
 const ErrorTypes = require('../helpers/ErrorTypes');
 const Response = require('../helpers/Response');
 const TokenGenerator = require('../helpers/TokenGenerator');
@@ -121,6 +122,45 @@ class UserService {
       const user = await UserModel.getById(id);
       if (user) {
         return new Response(user);
+      }
+      return new Response(null, ErrorTypes.U005);
+    } catch (error) {
+      throw error;
+    }
+  }
+  
+  static async delete(req) {
+    try {
+      const tokenDecoded = Auth.getToken(req);
+      if (tokenDecoded) {
+        // Get the user
+        const user = await UserModel.getById(tokenDecoded._id);
+        if (user) {
+          // Remove user dependencies
+          await FormAnswerModel.deleteByUser(tokenDecoded._id)
+          await UserModel.delete(tokenDecoded._id);
+          return new Response(user);
+        }
+      }
+      return new Response(null, ErrorTypes.U005);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async deleteById(id) {
+    try {
+      // Check required fields
+      if (!id) {
+        return new Response(null, ErrorTypes.U005);
+      }
+      
+      // Get the user
+      const user = await UserModel.getById(id);
+      if (user) {
+        await FormAnswerModel.deleteByUser(id)
+        await UserModel.delete(id);
+        return new Response(true);
       }
       return new Response(null, ErrorTypes.U005);
     } catch (error) {

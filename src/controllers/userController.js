@@ -11,6 +11,10 @@ class UserController {
   static get = async (req, res) => ServiceInvoke(UserService.get(req), res);
   
   static getById = async (req, res) => ServiceInvoke(UserService.getById(req.params.id), res);
+
+  static delete = async (req, res) => ServiceInvoke(UserService.delete(req), res);
+  
+  static deleteById = async (req, res) => ServiceInvoke(UserService.deleteById(req.params.id), res);
  
   static acceptConsentTerm = async (req, res) => ServiceInvoke(UserService.acceptConsentTerm(req.params.id), res);
 

@@ -48,6 +48,11 @@ class FormAnswerModel {
   static deleteMany(query) {
     return formAnswerModel.deleteMany(query);
   }
+  
+  static deleteByUser(userId) {
+    const query = { userId: mongoose.Types.ObjectId(userId) };
+    return formAnswerModel.deleteMany(query);
+  }
 
   static count(query) {
     return formAnswerModel.countDocuments(query);

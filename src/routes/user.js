@@ -15,6 +15,10 @@ router.get('/', Auth.authenticate(false), UserController.get);
 
 router.get('/:id', Auth.authenticate(true), UserController.getById);
 
+router.delete('/', Auth.authenticate(false), UserController.delete);
+
+router.delete('/:id', Auth.authenticate(true), UserController.deleteById);
+
 router.patch('/consentTerm/accept/:id', Auth.authenticate(false), UserController.acceptConsentTerm);
 
 router.get('/consentTerm/:id', Auth.authenticate(false), UserController.getConsentTerm);
