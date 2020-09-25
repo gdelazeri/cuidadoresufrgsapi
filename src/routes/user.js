@@ -25,6 +25,8 @@ router.patch('/consentTerm/accept/:id', Auth.authenticate(false), UserController
 
 router.get('/consentTerm/:id', Auth.authenticate(false), UserController.getConsentTerm);
 
+router.patch('/password', Auth.authenticate(false), UserController.passwordChange);
+
 router.get('/password/recoverToken/:email', UserController.passwordRecoverToken);
 
 router.post('/password/recoverToken/check/:email', UserController.passwordRecoverTokenCheck);

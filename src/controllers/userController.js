@@ -21,6 +21,8 @@ class UserController {
   static acceptConsentTerm = async (req, res) => ServiceInvoke(UserService.acceptConsentTerm(req.params.id), res);
 
   static getConsentTerm = async (req, res) => ServiceInvoke(UserService.getConsentTerm(req.params.id), res);
+
+  static passwordChange = async (req, res) => ServiceInvoke(UserService.passwordChange(req), res);
   
   static passwordRecoverToken = async (req, res) => ServiceInvoke(UserService.passwordRecoverToken(req.params.email), res);
   

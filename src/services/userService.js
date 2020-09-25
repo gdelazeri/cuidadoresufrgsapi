@@ -225,6 +225,27 @@ class UserService {
       throw error;
     }
   }
+  
+  static async passwordChange(req) {
+    try {
+      const tokenDecoded = Auth.getToken(req);
+      const password = req.body.password;
+      
+      // Get the user
+      const user = await UserModel.getById(tokenDecoded._id);
+      if (user) {
+        if (typeof password === 'string' && ValidatePassword(password)) {
+          const salt = await bcrypt.genSalt(10);
+          user.password = await bcrypt.hashSync(password, salt);
+          await UserModel.put(user);
+          return new Response(true);
+        }
+      }
+      return new Response(null, ErrorTypes.U005);
+    } catch (error) {
+      throw error;
+    }
+  }
 
   static async passwordRecoverToken(email) {
     try {
@@ -296,7 +317,7 @@ class UserService {
         } else if (user.token && user.token !== token) {
           return new Response(null, ErrorTypes.U008);
         } else {
-          if (typeof password === 'string' && password.length > 0 && ValidatePassword(password)) {
+          if (typeof password === 'string' && ValidatePassword(password)) {
             const salt = await bcrypt.genSalt(10);
             user.password = await bcrypt.hashSync(password, salt);
             await UserModel.put(user);
