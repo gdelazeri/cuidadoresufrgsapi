@@ -239,6 +239,8 @@ class UserService {
           user.password = await bcrypt.hashSync(password, salt);
           await UserModel.put(user);
           return new Response(true);
+        } else {
+          return new Response(null, ErrorTypes.U009);
         }
       }
       return new Response(null, ErrorTypes.U005);
