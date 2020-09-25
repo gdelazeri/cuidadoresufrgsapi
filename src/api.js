@@ -30,7 +30,7 @@ app.use('/formAnswer', formAnswerRoutes);
 /* Status endpoint */
 app.get('/status', (req, res) => {
   log.info('API Online');
-  res.send('API Online');
+  res.send(new Response(true));
 });
 
 /* Error handler */
@@ -43,8 +43,8 @@ app.use((error, req, res, next) => {
 /* Errors */
 app.all('*', (req, res) => {
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  log.error(`NOT FOUND: ${req.url} - IP: ${ip} - ${req.headers['user-agent']}`);
-  res.sendStatus(404);
+  log.error(`NOT FOUND: ${req.method} ${req.url} - IP: ${ip} - ${req.headers['user-agent']}`);
+  res.status(404).send(new Response(null, ErrorTypes.G001));
 });
 
 /* Startup */

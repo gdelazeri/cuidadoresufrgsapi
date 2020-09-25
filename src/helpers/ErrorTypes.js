@@ -1,6 +1,7 @@
 const ErrorTypes = {
   // Generic error
   G000: { code: 'G000', message: 'Ocorreu um erro inesperado e não tratado.' },
+  G001: { code: 'G001', message: 'Endpoint inexistente.' },
 
   // User error
   U001: { code: 'U001', message: 'O e-mail informado já foi utilizado. Informe outro e-mail ou recupere sua senha.' },
