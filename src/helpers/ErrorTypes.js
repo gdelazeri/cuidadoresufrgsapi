@@ -25,6 +25,10 @@ const ErrorTypes = {
   // Answer error
   A001: { code: 'A001', message: 'Preencha todos os campos obrigatórios.' },
   A002: { code: 'A002', message: 'Resposta não encontrada.' },
+
+  // App settings error
+  S001: { code: 'S001', message: 'Versão não informada.' },
+  S002: { code: 'S002', message: 'Versão não mínima não configurada.' },
 }
 
 module.exports = ErrorTypes;

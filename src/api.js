@@ -10,6 +10,7 @@ const userRoutes = require('./routes/user');
 const contentRoutes = require('./routes/content');
 const formRoutes = require('./routes/form');
 const formAnswerRoutes = require('./routes/formAnswer');
+const appSettingRoutes = require('./routes/appSetting');
 const Response = require('./helpers/Response');
 const ErrorTypes = require('./helpers/ErrorTypes');
 
@@ -26,6 +27,7 @@ app.use('/user', userRoutes);
 app.use('/content', contentRoutes);
 app.use('/form', formRoutes);
 app.use('/formAnswer', formAnswerRoutes);
+app.use('/appSetting', appSettingRoutes);
 
 /* Status endpoint */
 app.get('/status', (req, res) => {
