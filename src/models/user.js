@@ -17,6 +17,7 @@ const user = new mongoose.Schema({
   consentTermAcceptedAt: { type: Date, required: false },
   token: { type: String, required: false },
   tokenExpiresAt: { type: Date, required: false },
+  notificationToken: { type: String, required: false },
   createdAt: { type: Date, required: true, default: Date.now },
 });
 
