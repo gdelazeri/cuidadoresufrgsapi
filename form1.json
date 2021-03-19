@@ -1,0 +1,358 @@
+{
+  "active": true,
+  "title": "WHOQOL Bref",
+  "description": "O módulo WHOQOL-BREF é constituído de 26 perguntas (sendo a pergunta numero 1 e 2 sobre a qualidade de vida geral), as respostas seguem uma escala de Likert (de 1 a 5, quanto maior a pontuação melhor a qualidade de vida). Fora essas duas questões (1 e 2), o instrumento tem 24 facetas as quais compõem 4 domínios que são: FÍSICO, PSICOLÓGICO, RELAÇÕES SOCIAIS e MEIO AMBIENTE",
+  "type": "WHOQOL",
+  "introduction": {
+    "title": "Instruções",
+    "text": "Este questionário é sobre como você se sente a respeito de sua qualidade de vida, saúde e outras áreas de sua vida. Por favor responda a todas as questões. Se você não tem certeza sobre que resposta dar em uma questão, por favor, escolha entre as alternativas a que lhe parece mais apropriada. Esta, muitas vezes, poderá ser sua primeira escolha. Por favor, tenha em mente seus valores, aspirações, prazeres e preocupações. Nós estamos perguntando o que você acha de sua vida, tomando como como referência as duas últimas semanas."
+  },
+  "questions": [{
+    "type": "CHOOSE",
+    "label": "Como você avaliaria sua qualidade de vida?",
+    "options": [
+      { "label": "Muito ruim", "value": 5 },
+      { "label": "Ruim", "value": 4 },
+      { "label": "Nem ruim nem boa", "value": 3 },
+      { "label": "Boa", "value": 2 },
+      { "label": "Muito boa", "value": 1 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão satisfeito(a) você está com a sua saúde?",
+    "options": [
+      { "label": "Muito insatisfeito", "value": 5 },
+      { "label": "Insatisfeito", "value": 4 },
+      { "label": "Nem satisfeito nem insatisfeito", "value": 3 },
+      { "label": "Satisfeito", "value": 2 },
+      { "label": "Muito satisfeito", "value": 1 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Em que medida você acha que sua dor (física) impede você de fazer o que você precisa?",
+    "options": [
+      { "label": "Nada", "value": 1 },
+      { "label": "Muito pouco", "value": 2 },
+      { "label": "Mais ou menos", "value": 3 },
+      { "label": "Bastante", "value": 4 },
+      { "label": "Extremamente", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "O quanto você precisa de algum tratamento médico para levar sua vida diária?",
+    "options": [
+      { "label": "Nada", "value": 1 },
+      { "label": "Muito pouco", "value": 2 },
+      { "label": "Mais ou menos", "value": 3 },
+      { "label": "Bastante", "value": 4 },
+      { "label": "Extremamente", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "O quanto você aproveita a vida?",
+    "options": [
+      { "label": "Nada", "value": 1 },
+      { "label": "Muito pouco", "value": 2 },
+      { "label": "Mais ou menos", "value": 3 },
+      { "label": "Bastante", "value": 4 },
+      { "label": "Extremamente", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Em que medida você acha que a sua vida tem sentido?",
+    "options": [
+      { "label": "Nada", "value": 1 },
+      { "label": "Muito pouco", "value": 2 },
+      { "label": "Mais ou menos", "value": 3 },
+      { "label": "Bastante", "value": 4 },
+      { "label": "Extremamente", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "O quanto você consegue se concentrar?",
+    "options": [
+      { "label": "Nada", "value": 1 },
+      { "label": "Muito pouco", "value": 2 },
+      { "label": "Mais ou menos", "value": 3 },
+      { "label": "Bastante", "value": 4 },
+      { "label": "Extremamente", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão seguro(a) você se sente em sua vida diária?",
+    "options": [
+      { "label": "Nada", "value": 1 },
+      { "label": "Muito pouco", "value": 2 },
+      { "label": "Mais ou menos", "value": 3 },
+      { "label": "Bastante", "value": 4 },
+      { "label": "Extremamente", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão saudável é o seu ambiente físico (clima, barulho, poluição, atrativos)?",
+    "options": [
+      { "label": "Nada", "value": 1 },
+      { "label": "Muito pouco", "value": 2 },
+      { "label": "Mais ou menos", "value": 3 },
+      { "label": "Bastante", "value": 4 },
+      { "label": "Extremamente", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Você tem energia suficiente para seu dia-a-dia?",
+    "options": [
+      { "label": "Nada", "value": 1 },
+      { "label": "Muito pouco", "value": 2 },
+      { "label": "Médio", "value": 3 },
+      { "label": "Muito", "value": 4 },
+      { "label": "Completamente", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Você é capaz de aceitar sua aparência física?",
+    "options": [
+      { "label": "Nada", "value": 1 },
+      { "label": "Muito pouco", "value": 2 },
+      { "label": "Médio", "value": 3 },
+      { "label": "Muito", "value": 4 },
+      { "label": "Completamente", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Você tem dinheiro suficiente para satisfazer suas necessidades?",
+    "options": [
+      { "label": "Nada", "value": 1 },
+      { "label": "Muito pouco", "value": 2 },
+      { "label": "Médio", "value": 3 },
+      { "label": "Muito", "value": 4 },
+      { "label": "Completamente", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão disponíveis para você estão as informações que precisa no seu dia-a-dia?",
+    "options": [
+      { "label": "Nada", "value": 1 },
+      { "label": "Muito pouco", "value": 2 },
+      { "label": "Médio", "value": 3 },
+      { "label": "Muito", "value": 4 },
+      { "label": "Completamente", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Em que medida você tem oportunidades de atividade de lazer?",
+    "options": [
+      { "label": "Nada", "value": 1 },
+      { "label": "Muito pouco", "value": 2 },
+      { "label": "Médio", "value": 3 },
+      { "label": "Muito", "value": 4 },
+      { "label": "Completamente", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão bem você é capaz de se locomover?",
+    "options": [
+      { "label": "Muito ruim", "value": 1 },
+      { "label": "Ruim", "value": 2 },
+      { "label": "Nem ruim nem bom", "value": 3 },
+      { "label": "Bom", "value": 4 },
+      { "label": "Muito bom", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão satisfeito(a) você está com o seu sono?",
+    "options": [
+      { "label": "Muito insatisfeito", "value": 1 },
+      { "label": "Insatisfeito", "value": 2 },
+      { "label": "Nem satisfeito nem insatisfeito", "value": 3 },
+      { "label": "Satisfeito", "value": 4 },
+      { "label": "Muito satisfeito", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão satisfeito(a) você está com sua capacidade de desempenhar as atividades do seu dia-a-dia?",
+    "options": [
+      { "label": "Muito insatisfeito", "value": 1 },
+      { "label": "Insatisfeito", "value": 2 },
+      { "label": "Nem satisfeito nem insatisfeito", "value": 3 },
+      { "label": "Satisfeito", "value": 4 },
+      { "label": "Muito satisfeito", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão satisfeito(a) você está com sua capacidade para o trabalho?",
+    "options": [
+      { "label": "Muito insatisfeito", "value": 1 },
+      { "label": "Insatisfeito", "value": 2 },
+      { "label": "Nem satisfeito nem insatisfeito", "value": 3 },
+      { "label": "Satisfeito", "value": 4 },
+      { "label": "Muito satisfeito", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão satisfeito(a) você está consigo mesmo?",
+    "options": [
+      { "label": "Muito insatisfeito", "value": 1 },
+      { "label": "Insatisfeito", "value": 2 },
+      { "label": "Nem satisfeito nem insatisfeito", "value": 3 },
+      { "label": "Satisfeito", "value": 4 },
+      { "label": "Muito satisfeito", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão satisfeito(a) você está com suas relações pessoais (amigos, parentes, conhecidos, colegas)?",
+    "options": [
+      { "label": "Muito insatisfeito", "value": 1 },
+      { "label": "Insatisfeito", "value": 2 },
+      { "label": "Nem satisfeito nem insatisfeito", "value": 3 },
+      { "label": "Satisfeito", "value": 4 },
+      { "label": "Muito satisfeito", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão satisfeito(a) você está com sua vida sexual?",
+    "options": [
+      { "label": "Muito insatisfeito", "value": 1 },
+      { "label": "Insatisfeito", "value": 2 },
+      { "label": "Nem satisfeito nem insatisfeito", "value": 3 },
+      { "label": "Satisfeito", "value": 4 },
+      { "label": "Muito satisfeito", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão satisfeito(a) você está com o apoio que você recebe de seus amigos?",
+    "options": [
+      { "label": "Muito insatisfeito", "value": 1 },
+      { "label": "Insatisfeito", "value": 2 },
+      { "label": "Nem satisfeito nem insatisfeito", "value": 3 },
+      { "label": "Satisfeito", "value": 4 },
+      { "label": "Muito satisfeito", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão satisfeito(a) você está com as condições do local onde mora? ",
+    "options": [
+      { "label": "Muito insatisfeito", "value": 1 },
+      { "label": "Insatisfeito", "value": 2 },
+      { "label": "Nem satisfeito nem insatisfeito", "value": 3 },
+      { "label": "Satisfeito", "value": 4 },
+      { "label": "Muito satisfeito", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão satisfeito(a) você está com o seu acesso aos serviços de saúde?",
+    "options": [
+      { "label": "Muito insatisfeito", "value": 1 },
+      { "label": "Insatisfeito", "value": 2 },
+      { "label": "Nem satisfeito nem insatisfeito", "value": 3 },
+      { "label": "Satisfeito", "value": 4 },
+      { "label": "Muito satisfeito", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Quão satisfeito(a) você está com o seu meio de transporte?",
+    "options": [
+      { "label": "Muito insatisfeito", "value": 1 },
+      { "label": "Insatisfeito", "value": 2 },
+      { "label": "Nem satisfeito nem insatisfeito", "value": 3 },
+      { "label": "Satisfeito", "value": 4 },
+      { "label": "Muito satisfeito", "value": 5 }
+    ],
+    "required": true
+  },
+  {
+    "type": "CHOOSE",
+    "label": "Com que frequência você tem sentimentos negativos tais como mau humor, desespero, ansiedade, depressão?",
+    "options": [
+      { "label": "Nunca", "value": 1 },
+      { "label": "Algumas vezes", "value": 2 },
+      { "label": "Frequentemente", "value": 3 },
+      { "label": "Muito frequentemente", "value": 4 },
+      { "label": "Sempre", "value": 5 }
+    ],
+    "required": true
+  }],
+  "domains": [{
+    "title": "Domínio físico",
+    "questions": [3,4,10,15,16,17,18]
+  },
+  {
+    "title": "Domínio psicológico",
+    "questions": [5,6,7,11,19,26]
+  },
+  {
+    "title": "Relações sociais",
+    "questions": [20,21,22]
+  },
+  {
+    "title": "Meio ambiente",
+    "questions": [8,9,12,13,14,23,24,25]
+  }],
+  "classification": [{
+    "label": "Necessita melhorar",
+    "min": 1,
+    "max": 2.9
+  },
+  {
+    "label": "Regular",
+    "min": 3,
+    "max": 3.9
+  },
+  {
+    "label": "Boa",
+    "min": 4,
+    "max": 4.9
+  },
+  {
+    "label": "Muito boa",
+    "min": 5,
+    "max": 5
+  }]
+}
