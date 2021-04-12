@@ -5,18 +5,18 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const log = require('./config/log');
-const userRoutes = require('./routes/user');
-const contentRoutes = require('./routes/content');
-const formRoutes = require('./routes/form');
-const formAnswerRoutes = require('./routes/formAnswer');
-const appSettingRoutes = require('./routes/appSetting');
-const Response = require('./helpers/Response');
-const ErrorTypes = require('./helpers/ErrorTypes');
+const log = require('./src/config/log');
+const userRoutes = require('./src/routes/user');
+const contentRoutes = require('./src/routes/content');
+const formRoutes = require('./src/routes/form');
+const formAnswerRoutes = require('./src/routes/formAnswer');
+const appSettingRoutes = require('./src/routes/appSetting');
+const Response = require('./src/helpers/Response');
+const ErrorTypes = require('./src/helpers/ErrorTypes');
 
 /* Express initialization */
 const app = express();
-require('./config/db');
+require('./src/config/db');
 
 app.use(cors());
 app.use(helmet());
